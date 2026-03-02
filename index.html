@@ -3,6 +3,8 @@
 <head>
      <meta charset="UTF-8">
     <title>GTKEOE</title>
+    
+</head>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +24,7 @@
         .main-info h1 {
             margin: 0;
         }
-        .last-updated-on, .hobbies, .email, .photo, .introduction, .course, .fun-fact{
+        .last-updated-on, .contents, .hobbies, .email, .photo, .introduction, .course, .fun-fact{
             background: #e7e7e7;
             padding: 15px;
             margin-bottom: 10px;
@@ -32,10 +34,55 @@
 }
     </style>
 </head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: left;
+      margin-top: 50px;
+    }
+
+    .main-info h1 {
+      cursor: pointer; /* shows it’s clickable */
+      transition: color 0.3s ease; /* smooth transition */
+      color: white; /* initial color */
+    }
+  </style>
+</head>
 <body>
-    <div class="container">
-        <header class="main-info">
-            <h1>Francisco Torres</h1>
+  <div class="container">
+    <header class="main-info">
+      <h1 id="name">Francisco Torres</h1>
+      <p id="dateTime"></p>
+    </header>
+  </div>
+
+  <script>
+    const nameElement = document.getElementById('name');
+
+    // Set initial state
+    let isPurple = false;
+
+    nameElement.addEventListener('click', function() {
+      if (!isPurple) {
+        nameElement.style.color = 'purple';
+        isPurple = true;
+      } else {
+        nameElement.style.color = 'white';
+        isPurple = false;
+      }
+    });
+  </script>
+</body>
+            <script>
+  function updateDateTime() {
+    const now = new Date();
+    document.getElementById("dateTime").textContent =
+      now.toLocaleString();
+  }
+
+  setInterval(updateDateTime, 1000);
+  updateDateTime(); // run immediately
+</script>
         </header>
 
         <section class="email">
@@ -44,12 +91,35 @@
 	<p>Discord username: franciscot0585</p>
 </section>
 
+<nav>
+    <section class="contents">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#introduction">introduction</a></li>
+    <li><a href="#course">course</a></li>
+    <li><a href="#hobbies">hobbies</a></li>
+    <li><a href="#fun-fact">fun-fact</a></li>
+  </ul>
+</nav>
+</section>
+
 <section class="photo">
         <div style="text-align: center;">
-    <img src="me.png" alt="Description" style="width:300px;">
+    <img src="me.png" alt="Description" class="hover-image" style="width:300px;">
+    <style>
+    .hover-image {
+  transition: transform 0.5s ease, filter 0.5s ease; /* smooth animation */
+}
+
+.hover-image:hover {
+  transform: scale(1.1); /* zoom in slightly */
+  filter: brightness(80%); /* darken a bit */
+}
+</style>
 </div>
 </section>       
 
+        <section id="introduction">
         <section class="introduction">
 			<h2>introduction</h2>
 			<p>I would describe myself to be less talktive than most, I have a strong work ethic and I like to put in as much
@@ -62,6 +132,7 @@
             </p>
         </section>
 
+        <section id="course">
 		<section class="course">
             <h2>What I hope to learn from this course</h2>
             <p>Theres many things that I assumed would be taught when signing up for this course and a few things I had hoped for before starting were:<p>
@@ -71,6 +142,7 @@
                 <p>- Some brief amount of history into how coding began or started</p> 
         </section>
 
+        <section id="hobbies">
         <section class="hobbies">
             <h2>My favorite hobby/avtivity</h2>
             <p>- I like to fly my drone every once in a while</p>
@@ -78,6 +150,7 @@
             <p>- <a href="https://tutorial.onepiece-cardgame.com/en">https://tutorial.onepiece-cardgame.com/en</a></p>
         </section>
 
+        <section id="fun-fact">
         <section class="fun-fact">
             <h2>Fun Fact</h2>
             <p>I'm a big fan of Star Wars. I've watched all the movies and shows, and currently I am watching all of it
@@ -90,3 +163,4 @@
         </section>
     </body>
 </html>
+
